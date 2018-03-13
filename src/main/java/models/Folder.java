@@ -42,7 +42,7 @@ public class Folder {
     }
 
     @ManyToOne
-    @JoinColumn(name="folder_id", nullable = false)
+    @JoinColumn(name="owner_id", nullable = false)
     public Owner getOwner() {
         return owner;
     }

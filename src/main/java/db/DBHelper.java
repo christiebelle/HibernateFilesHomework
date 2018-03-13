@@ -2,6 +2,7 @@ package db;
 
 import models.File;
 import models.Folder;
+import models.Owner;
 import org.hibernate.*;
 import org.hibernate.criterion.Restrictions;
 
@@ -78,6 +79,15 @@ public class DBHelper {
         List<File> results = null;
         Criteria cr = session.createCriteria(File.class);
         cr.add(Restrictions.eq("folder", folder));
+        results = getAList(cr);
+        return results;
+    }
+
+    public static List<Folder> findByOwner(Owner owner){
+        session = HibernateUtil.getSessionFactory().openSession();
+        List<Folder> results = null;
+        Criteria cr = session.createCriteria(Folder.class);
+        cr.add(Restrictions.eq("owner", owner));
         results = getAList(cr);
         return results;
     }

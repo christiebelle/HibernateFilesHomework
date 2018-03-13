@@ -36,6 +36,10 @@ public class Main {
 
             Folder foundFolder = DBHelper.findById(Folder.class, folder1.getId());
 
+            Owner foundowners = DBHelper.findById(Owner.class, owner1.getId());
+
             List<File> foundfiles = DBHelper.findByFolder(folder1);
+
+            List<Folder> foundfolders = DBHelper.findByOwner(owner1);
         }
     }
