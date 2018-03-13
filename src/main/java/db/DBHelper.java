@@ -96,8 +96,17 @@ public class DBHelper {
         }
     }
 
-//    public static void deleteAll(){
-//
-//    }
-
+    public static void delete(){
+        session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.delete();
+            transaction.commit();
+        } catch (HibernateException ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+        } finally {
+            session.close();
+        }
+    }
 }
