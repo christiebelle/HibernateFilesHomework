@@ -10,12 +10,14 @@ public class Folder {
 
     private int id;
     private String title;
+    private Owner owner;
     private Set<File> files;
 
     public Folder() {}
 
-    public Folder(String title) {
+    public Folder(String title, Owner owner) {
         this.title = title;
+        this.owner = owner;
     }
 
     @Id
@@ -37,6 +39,16 @@ public class Folder {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="folder_id", nullable = false)
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 
     @OneToMany(mappedBy = "folder", fetch = FetchType.EAGER)
